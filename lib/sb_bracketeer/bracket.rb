@@ -9,9 +9,4 @@ class SbBracketeer::Bracket
     @super_bowl = SbBracketeer::Round.create_by_year_and_type(self.year, "super_bowl", self)
   end
 
-  def display
-    puts ""
-    puts self.wildcard_round
-  end
-
 end

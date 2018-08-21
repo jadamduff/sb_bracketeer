@@ -11,23 +11,39 @@ class SbBracketeer::Bracket
 
   def display
     puts ""
-    puts self.wildcard_round.game1.name
+    puts "#{self.wildcard_round.game1.date} #{self.wildcard_round.game1.name}"
     puts "#{self.wildcard_round.game1.team1.name} #{self.wildcard_round.game1.team1.score}"
+    puts "---------------"
     puts "#{self.wildcard_round.game1.team2.name} #{self.wildcard_round.game1.team2.score}"
     puts ""
+    puts "                                                  #{self.divisional_round.game1.date} #{self.divisional_round.game1.name}"
+    puts "                                                  #{self.divisional_round.game1.team1.name} #{self.divisional_round.game1.team1.score}"
+    puts "                                                  ---------------"
+    puts "                                                  #{self.divisional_round.game1.team2.name} #{self.divisional_round.game1.team2.score}"
     puts ""
-    puts self.wildcard_round.game2.name
+    puts "#{self.wildcard_round.game2.date} #{self.wildcard_round.game2.name}"
     puts "#{self.wildcard_round.game2.team1.name} #{self.wildcard_round.game2.team1.score}"
+    puts "---------------"
     puts "#{self.wildcard_round.game2.team2.name} #{self.wildcard_round.game2.team2.score}"
     puts ""
     puts ""
-    puts self.wildcard_round.game3.name
+    puts ""
+    puts ""
+    puts ""
+    puts ""
+    puts "#{self.wildcard_round.game3.date} #{self.wildcard_round.game3.name}"
     puts "#{self.wildcard_round.game3.team1.name} #{self.wildcard_round.game3.team1.score}"
+    puts "---------------"
     puts "#{self.wildcard_round.game3.team2.name} #{self.wildcard_round.game3.team2.score}"
     puts ""
     puts ""
-    puts self.wildcard_round.game4.name
+    puts ""
+    puts ""
+    puts ""
+    puts ""
+    puts "#{self.wildcard_round.game4.date} #{self.wildcard_round.game4.name}"
     puts "#{self.wildcard_round.game4.team1.name} #{self.wildcard_round.game4.team1.score}"
+    puts "---------------"
     puts "#{self.wildcard_round.game4.team2.name} #{self.wildcard_round.game4.team2.score}"
     puts ""
   end

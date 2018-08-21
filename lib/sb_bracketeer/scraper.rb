@@ -9,6 +9,6 @@ class SbBracketeer::Scraper
 
   def self.load_bracket_data(year)
     data = SbBracketeer::Scraper.load('https://www.footballdb.com/seasons/nfl/' + year.to_s)
-    data.css("table.statistics.scrollable tbody")
+    data.css("table.statistics.scrollable tbody tr.left")
   end
 end

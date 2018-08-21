@@ -1,5 +1,2 @@
-require "sb_bracketeer/version"
-
-module SbBracketeer
-  # Your code goes here...
-end
+require_relative "sb_bracketeer/version"
+require_relative 'sb_bracketeer/cli'

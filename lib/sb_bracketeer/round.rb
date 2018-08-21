@@ -9,18 +9,18 @@ class SbBracketeer::Round
     round_data = load_round_data(year)
     case round.type
     when "wildcard_round"
-      round.game1 = SbBracketeer::Game.create_by_round_data(round, round_data[0])
-      round.game2 = SbBracketeer::Game.create_by_round_data(round, round_data[1])
-      round.game3 = SbBracketeer::Game.create_by_round_data(round, round_data[2])
-      round.game4 = SbBracketeer::Game.create_by_round_data(round, round_data[3])
+      round.game1 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| data[:name].include?("NFC")}.first)
+      round.game2 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| data[:name].include?("NFC")}[1])
+      round.game3 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| data[:name].include?("AFC")}.first)
+      round.game4 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| data[:name].include?("AFC")}[1])
     when "divisional_round"
-      round.game1 = SbBracketeer::Game.create_by_round_data(round, round_data[4])
-      round.game2 = SbBracketeer::Game.create_by_round_data(round, round_data[5])
-      round.game3 = SbBracketeer::Game.create_by_round_data(round, round_data[6])
-      round.game4 = SbBracketeer::Game.create_by_round_data(round, round_data[7])
+      round.game1 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| (data[:team1] == round.bracket.wildcard_round.game1.winner.name || data[:team2] == round.bracket.wildcard_round.game1.winner.name) && data[:name].include?("Playoff")}.first)
+      round.game2 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| (data[:team1] == round.bracket.wildcard_round.game2.winner.name || data[:team2] == round.bracket.wildcard_round.game2.winner.name) && data[:name].include?("Playoff")}.first)
+      round.game3 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| (data[:team1] == round.bracket.wildcard_round.game3.winner.name || data[:team2] == round.bracket.wildcard_round.game3.winner.name) && data[:name].include?("Playoff")}.first)
+      round.game4 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| (data[:team1] == round.bracket.wildcard_round.game4.winner.name || data[:team2] == round.bracket.wildcard_round.game4.winner.name) && data[:name].include?("Playoff")}.first)
     when "conference_championship"
-      round.game1 = SbBracketeer::Game.create_by_round_data(round, round_data[8])
-      round.game2 = SbBracketeer::Game.create_by_round_data(round, round_data[9])
+      round.game1 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| data[:name].include?("NFC")}[4])
+      round.game2 = SbBracketeer::Game.create_by_round_data(round, round_data.select {|data| data[:name].include?("AFC")}[4])
     when "super_bowl"
       round.game1 = SbBracketeer::Game.create_by_round_data(round, round_data[10])
     end

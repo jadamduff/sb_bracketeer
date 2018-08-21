@@ -9,4 +9,23 @@ class SbBracketeer::Bracket
     @super_bowl = SbBracketeer::Round.create_by_year_and_type(self.year, "super_bowl", self)
   end
 
+  def display
+    puts ""
+    puts "#{self.wildcard_round.game1.team1.name} #{self.wildcard_round.game1.team1.score}"
+    puts "#{self.wildcard_round.game1.team2.name} #{self.wildcard_round.game1.team2.score}"
+    puts ""
+    puts ""
+    puts "#{self.wildcard_round.game2.team1.name} #{self.wildcard_round.game2.team1.score}"
+    puts "#{self.wildcard_round.game2.team2.name} #{self.wildcard_round.game2.team2.score}"
+    puts ""
+    puts ""
+    puts "#{self.wildcard_round.game3.team1.name} #{self.wildcard_round.game3.team1.score}"
+    puts "#{self.wildcard_round.game3.team2.name} #{self.wildcard_round.game3.team2.score}"
+    puts ""
+    puts ""
+    puts "#{self.wildcard_round.game4.team1.name} #{self.wildcard_round.game4.team1.score}"
+    puts "#{self.wildcard_round.game4.team2.name} #{self.wildcard_round.game4.team2.score}"
+    puts ""
+  end
+
 end

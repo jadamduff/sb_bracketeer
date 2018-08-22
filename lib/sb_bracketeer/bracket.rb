@@ -10,11 +10,28 @@ class SbBracketeer::Bracket
   end
 
   def display
+    display_hash = {
+      :wc => {
+        :label => "#{self.wildcard_round.game1.date} #{self.wildcard_round.game1.name}",
+        :team1 => "#{self.wildcard_round.game1.team1.name} #{self.wildcard_round.game1.team1.score}".split("").fill(" ", "#{self.wildcard_round.game1.team1.name} #{self.wildcard_round.game1.team1.score}".length, ("#{self.wildcard_round.game1.date} #{self.wildcard_round.game1.name}".length) - ("#{self.wildcard_round.game1.team1.name} #{self.wildcard_round.game1.team1.score}".length)).join(""),
+        :line_break => "---------------".split("").fill(" ", "---------------", ("#{self.wildcard_round.game1.date} #{self.wildcard_round.game1.name}".length) - "---------------".length),
+        :team2 => "#{self.wildcard_round.game1.team2.name} #{self.wildcard_round.game1.team2.score}".split("").fill(" ", "#{self.wildcard_round.game1.team2.name} #{self.wildcard_round.game1.team2.score}".length, ("#{self.wildcard_round.game1.date} #{self.wildcard_round.game1.name}".length) - ("#{self.wildcard_round.game1.team2.name} #{self.wildcard_round.game1.team2.score}".length)).join(""),
+      },
+      :div => {
+
+      },
+      :conf => {
+
+      },
+      :sb => {
+
+      }
+    }
     puts ""
-    puts "#{self.wildcard_round.game1.date} #{self.wildcard_round.game1.name}"
-    puts "#{self.wildcard_round.game1.team1.name} #{self.wildcard_round.game1.team1.score}"
-    puts "---------------"
-    puts "#{self.wildcard_round.game1.team2.name} #{self.wildcard_round.game1.team2.score}"
+    puts "#{display_hash[:wc][:label]}               |"
+    puts "#{display_hash[:wc][:team1]}               |"
+    puts "#{display_hash[:wc][:line_break]}               |"
+    puts "#{display_hash[:wc][:team2]}               |"
     puts ""
     puts "                                                  #{self.divisional_round.game1.date} #{self.divisional_round.game1.name}"
     puts "                                                  #{self.divisional_round.game1.team1.name} #{self.divisional_round.game1.team1.score}"

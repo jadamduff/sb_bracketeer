@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class SbBracketeer::Scraper
+  # Loads an array of html data from a specified url.
   def self.load(url)
     doc = Nokogiri::HTML(open(url))
     doc

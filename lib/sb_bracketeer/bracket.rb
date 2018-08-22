@@ -40,9 +40,10 @@ class SbBracketeer::Bracket
 
     # display_hash is only necessary to to help avoid developer confusion over what's supposed to be printed by the 'puts' methods at the bottom of display_bracket.
     # => Within this hash, each string to be printed by display_bracket is formed from the Bracket Object's data and formatted to print correctly.
-    # => :team1, :line_break, and :team2 values are all formatted using .fill() to add extra white space and match the length of :label, which is necessary to be able to 'puts' more than one piece of line data to the same line in the wildcard and divisional playoff rounds.
+    # => :team1, :line_break, and :team2 values are all formatted using .fill() to add extra white space and match the length of :label. This formatting is necessary to 'puts' more than one piece of line data to the same line in the wildcard and divisional playoff rounds.
     # => Each :label includes the game's date and title.
     # => :team1 and :team2 both include the team's name and score for that particular game.
+    
     display_hash = {
       :wc => {
         :game1 => {
@@ -119,6 +120,9 @@ class SbBracketeer::Bracket
         }
       }
     }
+
+    # ---------------------------------
+    # Prints the data from above to the terminal in a bracket format.
 
     puts ""
     puts "#{display_hash[:wc][:game1][:label]}     #{display_hash[:div][:game1][:label]}"

@@ -1,24 +1,24 @@
 # SbBracketeer
 
-Super Bowl Bracketeer is a gem that displays the entire playoff bracket for any NFL season from 1990-2017.
-Additionally, while viewing a particular bracket, the user can enter a team name from the bracket to view
+Super Bowl Bracketeer is a gem that displays the entire playoff bracket for any NFL season from 1990-2017.\
+Additionally, while viewing a particular bracket, the user can enter a team name from the bracket to view\
 that team's roster with player numbers in numerical order.
 
-Here's an example of a game from a bracket:/n
+Here's an example of a game from a bracket\
 
-02/01/09 Super Bowl XLIII
-Pittsburgh Steelers 27
----------------
+02/01/09 Super Bowl XLIII\
+Pittsburgh Steelers 27\
+---------------\
 Arizona Cardinals 23
 
 And when the user types 'Pittsburgh Steelers':
 
-2008 PITTSBURGH STEELERS
-2 Dennis Dixon/n
-3 Jeff Reed/n
-4 Byron Leftwich/n
-5 Paul Ernster/n
-7 Ben Roethlisberger/n
+2008 PITTSBURGH STEELERS\
+2 Dennis Dixon\
+3 Jeff Reed\
+4 Byron Leftwich\
+5 Paul Ernster\
+7 Ben Roethlisberger\
 10 Santonio Holmes
 14 Limas Sweed
 17 Mitch Berger

@@ -80,7 +80,7 @@ And when the user types 'Pittsburgh Steelers':
 
 This gem scrapes data directly from https://www.footballdb.com/ using Nokogiri and OpenURI.
 
-For more information on what went into building this gem, please visit my blog post at
+For more information on what went into building this gem, please visit my blog post at http://www.adamduffdev.com/test_blog_post?from=%40
 
 Enjoy!
 

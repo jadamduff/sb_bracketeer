@@ -10,9 +10,19 @@ class SbBracketeer::Bracket
     @super_bowl = SbBracketeer::Round.create_by_year_and_type(self.year, "super_bowl", self)
   end
 
-  def display_roster(team, year)
-    
-
+  def display_roster(team)
+    roster_arr = []
+    data = SbBracketeer::Scraper.load_roster(team, self.year)
+    data.each do |data|
+      num = data.css('div.td.w10.m20.rostercell_num').first.text
+      player = data.css('div.td.w20.m80.rostercell_name .rostplayer b a').first.text
+      row = num.to_s + " " + player.to_s
+      roster_arr << row
+    end
+    puts ""
+    puts self.year.to_s + ' ' + team.to_s.upcase
+    roster_arr.each {|row| puts row}
+    puts ""
   end
 
   def display_bracket

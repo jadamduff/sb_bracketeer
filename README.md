@@ -1,6 +1,7 @@
 # SbBracketeer
 
-Super Bowl Bracketeer is a gem that displays the entire playoff bracket for any NFL season from 1990-2017.\
+Super Bowl Bracketeer is a gem that displays the entire playoff bracket for any NFL season from 1990-2017.
+
 Additionally, while viewing a particular bracket, the user can enter a team name from the bracket to view\
 that team's roster with player numbers in numerical order.
 
@@ -103,7 +104,7 @@ Or install it yourself as:
 
 To run Super Bowl Bracketeer:
 
-  1. cd into sb_bracketeer\
+  1. cd into sb_bracketeer
   2. run './bin/sb-bracketeer'
 
 You should immediately see the following menu:
@@ -118,7 +119,7 @@ Upon entering a year from 1990-2017, you will be given the bracket for the speci
 
   -- Enter a team name to see their roster, or 'back' to select a different bracket:
 
-From here, 'back' will return you to the main menu where 'exit' will exit the program.
+From here, entering a team name will list their team roster in numerical order and 'back' will return you to the main menu where 'exit' will exit the program.
 
 
 ## Development

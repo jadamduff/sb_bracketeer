@@ -11,40 +11,31 @@ class SbBracketeer::CLI
   end
 
   def menu
-    years = (1978..2018).to_a.map {|x| x.to_s}
+    years = (1990..2017).to_a.map {|x| x.to_s}
     input = nil
     while input != "exit"
       puts ""
       puts "Please do one of the following:"
-      puts "  -- Enter a year to see that year's playoff bracket (1978 - 2018),"
-      puts "  -- enter a year and team name to view that team's roster (Ex. 1992 Dallas Cowboys),"
+      puts "  -- Enter a year to see that year's playoff bracket (1990 - 2017),"
       puts "  -- or enter 'exit'"
       puts ""
       input = gets.strip.to_s
       if years.include?(input)
+        bracket = SbBracketeer::Bracket.new(input)
+        bracket.display_bracket
         bracket_input = nil
         while bracket_input != 'back'
+          puts "  -- Enter a team name to see their roster, or 'back' to select a different bracket:"
           puts ""
-          puts "#{input} Bracket"
-          puts ""
-          puts "  -- Enter a team name to see their roster, or 'back' to return to the #{input} bracket:"
-          puts ""
-          bracket_input = gets.strip
-          if bracket_input == "Chicago Bears"
-            puts ""
-            puts "Bears Roster"
-            roster_input = nil
-            while roster_input != 'back'
-              puts ""
-              puts "  -- Enter 'back' to return to the #{input} bracket:"
-              puts ""
-              roster_input = gets.strip
-            end
+          bracket_input = gets.strip.downcase
+          if bracket.valid_team?(bracket_input)
+            bracket.display_roster(bracket_input)
+          elsif bracket_input != "back"
+            puts "Sorry, that team didn't make the playoffs in #{input}."
           end
         end
-      elsif input == "1992 Dallas Cowboys"
-        puts ""
-        puts "1992 Dallas Cowboys Roster"
+      elsif input != "exit"
+        puts "Sorry, that's not a valid year!"
       end
     end
   end

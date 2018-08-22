@@ -25,6 +25,11 @@ class SbBracketeer::Bracket
     puts ""
   end
 
+  def valid_team?(team)
+    team_name = team.split(' ').map(&:capitalize).join(' ')
+    self.teams.include?(team_name) ? true : false
+  end
+
   def display_bracket
     display_hash = {
       :wc => {

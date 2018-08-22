@@ -11,4 +11,9 @@ class SbBracketeer::Scraper
     data = SbBracketeer::Scraper.load('https://www.footballdb.com/seasons/nfl/' + year.to_s)
     data.css("table.statistics.scrollable tbody tr.left")
   end
+
+  def self.load_roster(team, year)
+    data = SbBracketeer::Scraper.load('https://www.footballdb.com/teams/nfl/' + team.split(' ').join('-').to_s + '/roster/' + year.to_s + '?sort=num')
+    data.css("div.divtable.divtable-striped.divtable-mobile .tr")
+  end
 end

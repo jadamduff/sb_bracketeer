@@ -5,8 +5,8 @@ class SbBracketeer::Game
     game.round = round
     game.date = data[:date]
     game.name = data[:name]
-    game.team1 = SbBracketeer::Team.new(data[:team1], data[:team1_score], self)
-    game.team2 = SbBracketeer::Team.new(data[:team2], data[:team2_score], self)
+    game.team1 = SbBracketeer::Team.new(data[:team1], data[:team1_score], game)
+    game.team2 = SbBracketeer::Team.new(data[:team2], data[:team2_score], game)
     if game.team1.score.to_i > game.team2.score.to_i
       game.winner = game.team1
     else

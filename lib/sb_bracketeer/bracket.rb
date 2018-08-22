@@ -1,15 +1,21 @@
 class SbBracketeer::Bracket
-  attr_accessor :year, :wildcard_round, :divisional_round, :conference_championship, :super_bowl
+  attr_accessor :year, :wildcard_round, :divisional_round, :conference_championship, :super_bowl, :teams
 
   def initialize(year)
     @year = year
+    @teams = []
     @wildcard_round = SbBracketeer::Round.create_by_year_and_type(self.year, "wildcard_round", self)
     @divisional_round = SbBracketeer::Round.create_by_year_and_type(self.year, "divisional_round", self)
     @conference_championship = SbBracketeer::Round.create_by_year_and_type(self.year, "conference_championship", self)
     @super_bowl = SbBracketeer::Round.create_by_year_and_type(self.year, "super_bowl", self)
   end
 
-  def display
+  def display_roster(team, year)
+    
+
+  end
+
+  def display_bracket
     display_hash = {
       :wc => {
         :game1 => {
@@ -102,10 +108,10 @@ class SbBracketeer::Bracket
     puts "#{display_hash[:wc][:game2][:line_break]}     #{display_hash[:div][:game2][:line_break]}"
     puts "#{display_hash[:wc][:game2][:team2]}     #{display_hash[:div][:game2][:team2]}"
     puts ""
-    puts "                                                                                                            #{display_hash[:sb][:game1][:label]}"
-    puts "                                                                                                            #{display_hash[:sb][:game1][:team1]}"
-    puts "                                                                                                            #{display_hash[:sb][:game1][:line_break]}"
-    puts "                                                                                                            #{display_hash[:sb][:game1][:team2]}"
+    puts "                                                                                                  #{display_hash[:sb][:game1][:label]}"
+    puts "                                                                                                  #{display_hash[:sb][:game1][:team1]}"
+    puts "                                                                                                  #{display_hash[:sb][:game1][:line_break]}"
+    puts "                                                                                                  #{display_hash[:sb][:game1][:team2]}"
     puts ""
     puts "#{display_hash[:wc][:game3][:label]}     #{display_hash[:div][:game3][:label]}"
     puts "#{display_hash[:wc][:game3][:team1]}     #{display_hash[:div][:game3][:team1]}"

@@ -1,3 +1,5 @@
+# Bracket -> ROUND -> Game -> Team
+
 class SbBracketeer::Round
   attr_accessor :type, :bracket, :game1, :game2, :game3, :game4
   def initialize(type)

@@ -1,15 +1,20 @@
+# BRACKET -> Round -> Game -> Team
+
 class SbBracketeer::Bracket
   attr_accessor :year, :wildcard_round, :divisional_round, :conference_championship, :super_bowl, :teams
 
   def initialize(year)
     @year = year
-    @teams = []
+    @teams = []  # An array of all teams that are included in a bracket. Teams are added by the Team Object.
+
+    # Each bracket round initializes with a new SbBracketeer::Round Object, passing in the year, round type, and the bracket object that the round should belong to (self).
     @wildcard_round = SbBracketeer::Round.create_by_year_and_type(self.year, "wildcard_round", self)
     @divisional_round = SbBracketeer::Round.create_by_year_and_type(self.year, "divisional_round", self)
     @conference_championship = SbBracketeer::Round.create_by_year_and_type(self.year, "conference_championship", self)
     @super_bowl = SbBracketeer::Round.create_by_year_and_type(self.year, "super_bowl", self)
   end
 
+  # display_roster collects the scraped team roster data from Scraper and fills/prints an array of '<player number> <player name>' strings.
   def display_roster(team)
     roster_arr = []
     data = SbBracketeer::Scraper.load_roster(team, self.year)
@@ -20,17 +25,24 @@ class SbBracketeer::Bracket
       roster_arr << row
     end
     puts ""
-    puts self.year.to_s + ' ' + team.to_s.upcase
+    puts self.year.to_s + ' ' + team.to_s.upcase # Puts a roster label Ex. 2008 PITTSBURGH STEELERS.
     roster_arr.each {|row| puts row}
     puts ""
   end
 
+  # valid_team? is used by a CLI Object to confirm that the team name entered by the user matches a team from the playoff bracket.
   def valid_team?(team)
-    team_name = team.split(' ').map(&:capitalize).join(' ')
+    team_name = team.split(' ').map(&:capitalize).join(' ') # Capitalizes each word in the entered team name to match the format in which team names are added to the bracket's @teams array.
     self.teams.include?(team_name) ? true : false
   end
 
   def display_bracket
+
+    # display_hash is only necessary to to help avoid developer confusion over what's supposed to be printed by the 'puts' methods at the bottom of display_bracket.
+    # => Within this hash, each string to be printed by display_bracket is formed from the Bracket Object's data and formatted to print correctly.
+    # => :team1, :line_break, and :team2 values are all formatted using .fill() to add extra white space and match the length of :label, which is necessary to be able to 'puts' more than one piece of line data to the same line in the wildcard and divisional playoff rounds.
+    # => Each :label includes the game's date and title.
+    # => :team1 and :team2 both include the team's name and score for that particular game.
     display_hash = {
       :wc => {
         :game1 => {
@@ -107,6 +119,7 @@ class SbBracketeer::Bracket
         }
       }
     }
+
     puts ""
     puts "#{display_hash[:wc][:game1][:label]}     #{display_hash[:div][:game1][:label]}"
     puts "#{display_hash[:wc][:game1][:team1]}     #{display_hash[:div][:game1][:team1]}"

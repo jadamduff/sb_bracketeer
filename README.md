@@ -75,7 +75,9 @@ And when the user types 'Pittsburgh Steelers':
 95 Donovan Woods\
 96 Orpheus Roye\
 98 Casey Hampton\
-99 Brett Keisel\
+99 Brett Keisel
+
+This gem scrapes data directly from https://www.footballdb.com/ using Nokogiri and OpenURI.
 
 For more information on what went into building this gem, please visit my blog post at
 
@@ -99,7 +101,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To run Super Bowl Bracketeer:
+
+  1. cd into sb_bracketeer\
+  2. run './bin/sb-bracketeer'
+
+You should immediately see the following menu:
+
+Welcome to Super Bowl Bracketeer!
+
+Please do one of the following:\
+  -- Enter a year to see that year's playoff bracket (1990 - 2017),\
+  -- or enter 'exit'
+
+Upon entering a year from 1990-2017, you will be given the bracket for the specified year and prompted with the following menu:
+
+  -- Enter a team name to see their roster, or 'back' to select a different bracket:
+
+From here, 'back' will return you to the main menu where 'exit' will exit the program.
+
 
 ## Development
 

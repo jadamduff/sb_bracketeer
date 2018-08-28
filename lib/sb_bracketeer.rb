@@ -5,6 +5,7 @@ require_relative 'sb_bracketeer/game'
 require_relative 'sb_bracketeer/round'
 require_relative 'sb_bracketeer/scraper'
 require_relative 'sb_bracketeer/team'
+require_relative 'sb_bracketeer/roster'
 
 require 'nokogiri'
 require 'open-uri'

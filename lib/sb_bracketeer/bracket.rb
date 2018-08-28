@@ -15,17 +15,10 @@ class SbBracketeer::Bracket
   end
 
   # display_roster collects the scraped team roster data from Scraper and fills/prints an array of '<player number> <player name>' strings.
-  def display_roster(team)
-    roster_arr = []
-    data = SbBracketeer::Scraper.load_roster(team, self.year)
-    data.each do |data|
-      num = data.css('div.td.w10.m20.rostercell_num').first.text
-      player = data.css('div.td.w20.m80.rostercell_name .rostplayer b a').first.text
-      row = num.to_s + " " + player.to_s
-      roster_arr << row
-    end
+  def display_roster(team_name, year)
+    roster_arr = SbBracketeer::Roster.create_or_return_roster_by_team_and_year(team_name, year)
     puts ""
-    puts self.year.to_s + ' ' + team.to_s.upcase # Puts a roster label Ex. 2008 PITTSBURGH STEELERS.
+    puts year.to_s + ' ' + team_name.to_s.upcase # Puts a roster label Ex. 2008 PITTSBURGH STEELERS.
     roster_arr.each {|row| puts row}
     puts ""
   end
@@ -43,7 +36,7 @@ class SbBracketeer::Bracket
     # => :team1, :line_break, and :team2 values are all formatted using .fill() to add extra white space and match the length of :label. This formatting is necessary to 'puts' more than one piece of line data to the same line in the wildcard and divisional playoff rounds.
     # => Each :label includes the game's date and title.
     # => :team1 and :team2 both include the team's name and score for that particular game.
-    
+
     display_hash = {
       :wc => {
         :game1 => {

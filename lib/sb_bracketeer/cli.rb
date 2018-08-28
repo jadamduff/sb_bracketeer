@@ -30,7 +30,7 @@ class SbBracketeer::CLI
           puts ""
           bracket_input = gets.strip.downcase
           if bracket.valid_team?(bracket_input) # This if statement validates that a valid team was entered and displays an error message if not.
-            bracket.display_roster(bracket_input)
+            bracket.display_roster(bracket_input, bracket.year)
           elsif bracket_input != "back" # If != "back" isn't specified, the if statement will treat all input as a team name, even 'back'.
             puts "Sorry, that team didn't make the playoffs in #{input}."
           end
